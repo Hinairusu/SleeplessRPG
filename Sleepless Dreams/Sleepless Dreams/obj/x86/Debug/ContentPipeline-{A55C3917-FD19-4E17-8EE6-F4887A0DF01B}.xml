@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XnaContent xmlns:Pipeline="Microsoft.Xna.Framework.Content.Pipeline">
+  <Asset Type="Pipeline:BuildItemCollection">
+    <BuildSuccessful>true</BuildSuccessful>
+    <Settings>
+      <ContentProjectGUID>{A55C3917-FD19-4E17-8EE6-F4887A0DF01B}</ContentProjectGUID>
+      <TargetPlatform>Windows</TargetPlatform>
+      <TargetProfile>Reach</TargetProfile>
+      <BuildConfiguration>Debug</BuildConfiguration>
+      <CompressContent>false</CompressContent>
+      <RootDirectory>H:\Programming\Sleepless Dreams\Sleepless Dreams\Sleepless Dreams\Sleepless DreamsContent\</RootDirectory>
+      <LoggerRootDirectory>H:\Programming\Sleepless Dreams\Sleepless Dreams\Sleepless Dreams\Sleepless Dreams\</LoggerRootDirectory>
+      <IntermediateDirectory>H:\Programming\Sleepless Dreams\Sleepless Dreams\Sleepless Dreams\Sleepless Dreams\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>H:\Programming\Sleepless Dreams\Sleepless Dreams\Sleepless Dreams\Sleepless Dreams\bin\x86\Debug\Content\</OutputDirectory>
+    </Settings>
+    <Assemblies>
+      <Assembly>
+        <Key>C:\WINDOWS\Microsoft.Net\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\v4.0_4.0.0.0__842cf8be1de50553\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
+        <Value>2016-02-01T12:57:20.7186935+00:00</Value>
+      </Assembly>
+    </Assemblies>
+  </Asset>
+</XnaContent>

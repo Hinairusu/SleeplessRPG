@@ -1,0 +1,24 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sleepless Dreams", "Sleepless Dreams\Sleepless Dreams\Sleepless Dreams.csproj", "{66EA1EAE-69FF-4F7C-BBD8-CC09BE52EC0B}"
+EndProject
+Project("{96E2B04D-8817-42C6-938A-82C39BA4D311}") = "Sleepless DreamsContent", "Sleepless Dreams\Sleepless DreamsContent\Sleepless DreamsContent.contentproj", "{A55C3917-FD19-4E17-8EE6-F4887A0DF01B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{66EA1EAE-69FF-4F7C-BBD8-CC09BE52EC0B}.Debug|x86.ActiveCfg = Debug|x86
+		{66EA1EAE-69FF-4F7C-BBD8-CC09BE52EC0B}.Debug|x86.Build.0 = Debug|x86
+		{66EA1EAE-69FF-4F7C-BBD8-CC09BE52EC0B}.Release|x86.ActiveCfg = Release|x86
+		{66EA1EAE-69FF-4F7C-BBD8-CC09BE52EC0B}.Release|x86.Build.0 = Release|x86
+		{A55C3917-FD19-4E17-8EE6-F4887A0DF01B}.Debug|x86.ActiveCfg = Debug|x86
+		{A55C3917-FD19-4E17-8EE6-F4887A0DF01B}.Release|x86.ActiveCfg = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
