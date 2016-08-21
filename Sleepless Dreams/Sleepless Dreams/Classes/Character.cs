@@ -7,6 +7,9 @@ namespace Sleepless_Dreams
 {
     public class Character
     {
+        // Character Name
+        private String name = "";
+
         // Level
         private int level = 1;
 
