@@ -72,6 +72,7 @@ namespace Sleepless_Dreams
                     return this.luck;
                 case "Level":
                     return this.level;
+                    break;
             }
         }
 
@@ -85,20 +86,28 @@ namespace Sleepless_Dreams
             {
                 case "Str":
                     this.str = value;
+                    break;
                 case "Dex":
                     this.dex = value;
+                    break;
                 case "Con":
                     this.con = value;
+                    break;
                 case "Int":
                     this.intel = value;
+                    break;
                 case "Wis":
                     this.wis = value;
+                    break;
                 case "Cha":
                     this.cha = value;
+                    break;
                 case "Luck":
                     this.luck = value;
+                    break;
                 case "Level":
                     this.level = value;
+                    break;
             }
             updateDerivedStats();
         }
@@ -113,20 +122,28 @@ namespace Sleepless_Dreams
             {
                 case "Str":
                     this.str += value;
+                    break;
                 case "Dex":
                     this.dex += value;
+                    break;
                 case "Con":
                     this.con += value;
+                    break;
                 case "Int":
                     this.intel += value;
+                    break;
                 case "Wis":
                     this.wis += value;
+                    break;
                 case "Cha":
                     this.cha += value;
+                    break;
                 case "Luck":
                     this.luck += value;
+                    break;
                 case "Level":
                     this.level += value;
+                    break;
             }
             updateDerivedStats();
         }
@@ -251,8 +268,10 @@ namespace Sleepless_Dreams
             {
                 case "Mage":
                     this.isMage = value;
+                    break;
                 case "Alive":
                     this.isAlive = value;
+                    break;
             }
         }
         #endregion
