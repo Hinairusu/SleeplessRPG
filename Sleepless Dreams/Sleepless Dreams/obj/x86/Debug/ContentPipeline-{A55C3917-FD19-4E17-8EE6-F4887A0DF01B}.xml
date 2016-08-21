@@ -8,10 +8,10 @@
       <TargetProfile>Reach</TargetProfile>
       <BuildConfiguration>Debug</BuildConfiguration>
       <CompressContent>false</CompressContent>
-      <RootDirectory>H:\Programming\Sleepless Dreams\Sleepless Dreams\Sleepless Dreams\Sleepless DreamsContent\</RootDirectory>
-      <LoggerRootDirectory>H:\Programming\Sleepless Dreams\Sleepless Dreams\Sleepless Dreams\Sleepless Dreams\</LoggerRootDirectory>
-      <IntermediateDirectory>H:\Programming\Sleepless Dreams\Sleepless Dreams\Sleepless Dreams\Sleepless Dreams\obj\x86\Debug\</IntermediateDirectory>
-      <OutputDirectory>H:\Programming\Sleepless Dreams\Sleepless Dreams\Sleepless Dreams\Sleepless Dreams\bin\x86\Debug\Content\</OutputDirectory>
+      <RootDirectory>H:\Programming\Sleepless Dreams\SleeplessRPG\Sleepless Dreams\Sleepless DreamsContent\</RootDirectory>
+      <LoggerRootDirectory>H:\Programming\Sleepless Dreams\SleeplessRPG\Sleepless Dreams\Sleepless Dreams\</LoggerRootDirectory>
+      <IntermediateDirectory>H:\Programming\Sleepless Dreams\SleeplessRPG\Sleepless Dreams\Sleepless Dreams\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>H:\Programming\Sleepless Dreams\SleeplessRPG\Sleepless Dreams\Sleepless Dreams\bin\x86\Debug\Content\</OutputDirectory>
     </Settings>
     <Assemblies>
       <Assembly>
