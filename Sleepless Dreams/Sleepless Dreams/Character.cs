@@ -47,9 +47,12 @@ namespace Sleepless_Dreams
             return this.cHP;
         }
 
-#region Base Stats
         // Get, Add to, and Set Base Stats
-        public int getStat(string statName, int value)
+        #region Base Stats
+        /* Call when you want one of the character's stats for whatever reason
+         *      statname sets which stat it will return.
+         */
+        public int getStat(string statName)
         {
             switch (statName)
             {
@@ -72,6 +75,10 @@ namespace Sleepless_Dreams
             }
         }
 
+        /* Call when you want to set a stat to a specific amount.
+         *      statName is which stat to affect
+         *      value is what it will be set to
+         */
         public void setStat(string statName, int value)
         {
             switch (statName)
@@ -96,6 +103,10 @@ namespace Sleepless_Dreams
             updateDerivedStats();
         }
 
+        /* Call when you want to add or subtract from a stat.
+         *      statName is which stat to affect
+         *      value is the amount to add (passing a negative value will subtract the value)
+         */
         public void addStat(string statName, int value)
         {
             switch (statName)
@@ -120,7 +131,10 @@ namespace Sleepless_Dreams
             updateDerivedStats();
         }
 
-        public void updateDerivedStats()
+        /* Call to set the update all derived stats after a Base Stat has been updated
+         * Could be upgraded to only change those that are needed to update
+         */
+        private void updateDerivedStats()
         {
             patkCalc();
             matkCalc();
@@ -131,41 +145,71 @@ namespace Sleepless_Dreams
             cMPCalc();
             mMPCalc();
         }
-#endregion
+        #endregion
 
-#region Sub Stats
+        /* Set all Derived Stat calculation classes to private as they shouldn't need to be called from outside
+         *      Also should only be called when the stats that affect them are changed.
+         *      Added a class to return specific Derived Stats when called.
+         */
         // derriving sub stats from the characters base stats
-        public void patkCalc() //Physcial Attack
+        #region Sub Stats
+        /* Call when you want one of the character's Derived Stats for whatever reason
+         *      statname sets which stat it will return.
+         */
+        public int getSubStat(string statName)
+        {
+            switch (statName)
+            {
+                case "pAtk":
+                    return this.patk;
+                case "pDef":
+                    return this.pdef;
+                case "mAtk":
+                    return this.matk;
+                case "mDef":
+                    return this.mdef;
+                case "cHP":
+                    return this.cHP;
+                case "mHP":
+                    return this.mHP;
+                case "cMP":
+                    return this.cMP;
+                case "mMP":
+                    return this.mMP;
+            }
+        }
+
+        private void patkCalc() //Physcial Attack
         {
             this.patk = this.str + (this.dex / 2);
         } 
 
-        public void matkCalc() //Magical Attack
+        private void matkCalc() //Magical Attack
         {
             this.matk = this.intel + ((this.wis + this.cha) / 3);
         } 
 
-        public void pdefCalc() //Physcial Defence
+        private void pdefCalc() //Physcial Defence
         {
             this.pdef = this.dex + (this.con / 2);
         }
 
-        public void mdefCalc() //Magical Defence
+        private void mdefCalc() //Magical Defence
         {
             this.mdef = this.wis + ((this.cha + this.intel) / 3);
         }
 
-        public void cHPCalc() //Current HP
+        private void cHPCalc() //Current HP
         {
             this.cHP = (this.con + this.level) * 30;
         }
 
-        public void mHPCalc() //Maximum HP
+        private void mHPCalc() //Maximum HP
         {
             this.mHP = (this.con + this.level) * 30;
         }
 
-        public void cMPCalc() //Current MP if the character is a mage
+        private void cMPCalc() //Current MP if the character is a mage
         {
             if (isMage)
                 this.cMP = (this.level * 100) + (this.intel * 85);
@@ -173,13 +217,44 @@ namespace Sleepless_Dreams
                 this.cMP = 0;
         }
 
-        public void mMPCalc() //Maximum MP if the character is a mage
+        private void mMPCalc() //Maximum MP if the character is a mage
         {
             if (isMage)
                 this.mMP = (this.level * 100) + (this.intel * 85);
             else
                 this.mMP = 0;
         }
-#endregion
+        #endregion
+
+        #region Statuses
+        /* Call when you want one of the character's statuses for whatever reason
+         *      statname sets which stat it will return.
+         */
+        public bool getStatus(string statName)
+        {
+            switch (statName)
+            {
+                case "Mage":
+                    return this.isMage;
+                case "Alive":
+                    return this.isAlive;
+            }
+        }
+
+        /* Call when you want to set a status to a specific amount.
+         *      statName is which status to affect
+         *      value is what it will be set to
+         */
+        public void setStat(string statName, bool value)
+        {
+            switch (statName)
+            {
+                case "Mage":
+                    this.isMage = value;
+                case "Alive":
+                    this.isAlive = value;
+            }
+        }
+        #endregion
     }
 }
