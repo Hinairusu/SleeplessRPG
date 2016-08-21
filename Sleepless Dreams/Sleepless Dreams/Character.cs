@@ -7,29 +7,35 @@ namespace Sleepless_Dreams
 {
     public class Character
     {
+        // Level
+        private int level = 1;
 
-        //fixed stats imported elsewhere
-        public int str = 8;
-        public int dex = 8;
-        public int con = 8;
-        public int intel = 8;
-        public int wis = 8;
-        public int cha = 8;
-        public int luck = 8;
-        public int level = 1;
-        public bool isAlive = true;
-        public bool isMage = false;
+        // Base Stats
+        private int str = 8;
+        private int dex = 8;
+        private int con = 8;
+        private int intel = 8;
+        private int wis = 8;
+        private int cha = 8;
+        private int luck = 8;
+        
+        // Statuses
+        private bool isAlive = true;
+        private bool isMage = false;
 
-        //below here starts at 0, [calculated later]
-        public int matk = 0;
-        public int mdef = 0;
-        public int patk = 0;
-        public int pdef = 0;
-        public int cHP = 1;
-        public int cmHP = 1;
-        public int cMP = 0;
-        public int cmMP = 0;
+        // HP and MP
+        private int cHP = 1;
+        private int mHP = 1;
+        private int cMP = 0;
+        private int mMP = 0;
 
+        // Derived Stats
+        private int matk = 0;
+        private int mdef = 0;
+        private int patk = 0;
+        private int pdef = 0;
+
+        // Damage Calculation
         public int damageCalc(int dmg)
         {
             this.cHP -= dmg;
@@ -38,91 +44,217 @@ namespace Sleepless_Dreams
                 this.cHP = 0;
                 this.isAlive = false;
             }
-
             return this.cHP;
         }
 
+        // Get, Add to, and Set Base Stats
+        #region Base Stats
+        /* Call when you want one of the character's stats for whatever reason
+         *      statname sets which stat it will return.
+         */
+        public int getStat(string statName)
+        {
+            switch (statName)
+            {
+                case "Str":
+                    return this.str;
+                case "Dex":
+                    return this.dex;
+                case "Con":
+                    return this.con;
+                case "Int":
+                    return this.intel;
+                case "Wis":
+                    return this.wis;
+                case "Cha":
+                    return this.cha;
+                case "Luck":
+                    return this.luck;
+                case "Level":
+                    return this.level;
+            }
+        }
+
+        /* Call when you want to set a stat to a specific amount.
+         *      statName is which stat to affect
+         *      value is what it will be set to
+         */
+        public void setStat(string statName, int value)
+        {
+            switch (statName)
+            {
+                case "Str":
+                    this.str = value;
+                case "Dex":
+                    this.dex = value;
+                case "Con":
+                    this.con = value;
+                case "Int":
+                    this.intel = value;
+                case "Wis":
+                    this.wis = value;
+                case "Cha":
+                    this.cha = value;
+                case "Luck":
+                    this.luck = value;
+                case "Level":
+                    this.level = value;
+            }
+            updateDerivedStats();
+        }
+
+        /* Call when you want to add or subtract from a stat.
+         *      statName is which stat to affect
+         *      value is the amount to add (passing a negative value will subtract the value)
+         */
+        public void addStat(string statName, int value)
+        {
+            switch (statName)
+            {
+                case "Str":
+                    this.str += value;
+                case "Dex":
+                    this.dex += value;
+                case "Con":
+                    this.con += value;
+                case "Int":
+                    this.intel += value;
+                case "Wis":
+                    this.wis += value;
+                case "Cha":
+                    this.cha += value;
+                case "Luck":
+                    this.luck += value;
+                case "Level":
+                    this.level += value;
+            }
+            updateDerivedStats();
+        }
+
+        /* Call to set the update all derived stats after a Base Stat has been updated
+         * Could be upgraded to only change those that are needed to update
+         */
+        private void updateDerivedStats()
+        {
+            patkCalc();
+            matkCalc();
+            pdefCalc();
+            mdefCalc();
+            cHPCalc();
+            mHPCalc();
+            cMPCalc();
+            mMPCalc();
+        }
+        #endregion
+
+        /* Set all Derived Stat calculation classes to private as they shouldn't need to be called from outside
+         *      Also should only be called when the stats that affect them are changed.
+         *      Added a class to return specific Derived Stats when called.
+         */
         // derriving sub stats from the characters base stats
         #region Sub Stats
+        /* Call when you want one of the character's Derived Stats for whatever reason
+         *      statname sets which stat it will return.
+         */
+        public int getSubStat(string statName)
+        {
+            switch (statName)
+            {
+                case "pAtk":
+                    return this.patk;
+                case "pDef":
+                    return this.pdef;
+                case "mAtk":
+                    return this.matk;
+                case "mDef":
+                    return this.mdef;
+                case "cHP":
+                    return this.cHP;
+                case "mHP":
+                    return this.mHP;
+                case "cMP":
+                    return this.cMP;
+                case "mMP":
+                    return this.mMP;
+            }
+        }
 
-        public int patkCalc() //Physcial Attack
+        private void patkCalc() //Physcial Attack
         {
             this.patk = this.str + (this.dex / 2);
-
-            return this.patk;
         } 
 
-        public int matkCalc() //Magical Attack
+        private void matkCalc() //Magical Attack
         {
             this.matk = this.intel + ((this.wis + this.cha) / 3);
-
-            return this.matk;
         } 
 
-        public int pdefCalc() //Physcial Defence
+        private void pdefCalc() //Physcial Defence
         {
             this.pdef = this.dex + (this.con / 2);
-
-            return this.pdef;
         }
 
-        public int mdefCalc() //Magical Defence
+        private void mdefCalc() //Magical Defence
         {
             this.mdef = this.wis + ((this.cha + this.intel) / 3);
-
-            return this.mdef;
         }
 
-        public int cHPCalc() //Current HP
+        private void cHPCalc() //Current HP
         {
             this.cHP = (this.con + this.level) * 30;
-
-            return this.cHP;
         }
 
-        public int cmHPCalc() //Maximum HP
+        private void mHPCalc() //Maximum HP
         {
-            this.cmHP = (this.con + this.level) * 30;
-
-            return this.cmHP;
+            this.mHP = (this.con + this.level) * 30;
         }
 
-        public int mageMP() //Current MP if the character is a mage
+        private void cMPCalc() //Current MP if the character is a mage
         {
-            if (isMage == true)
-            {
+            if (isMage)
                 this.cMP = (this.level * 100) + (this.intel * 85);
-
-                return this.cMP;
-            }
             else
-            {
                 this.cMP = 0;
-                return this.cMP;
-            }
         }
 
-        public int magemMP() //Maximum MP if the character is a mage
+        private void mMPCalc() //Maximum MP if the character is a mage
         {
-            if (isMage == true)
-            {
-                this.cmMP = (this.level * 100) + (this.intel * 85);
-
-                return this.cmMP;
-            }
+            if (isMage)
+                this.mMP = (this.level * 100) + (this.intel * 85);
             else
+                this.mMP = 0;
+        }
+        #endregion
+
+        #region Statuses
+        /* Call when you want one of the character's statuses for whatever reason
+         *      statname sets which stat it will return.
+         */
+        public bool getStatus(string statName)
+        {
+            switch (statName)
             {
-                this.cmMP = 0;
-                return this.cmMP;
+                case "Mage":
+                    return this.isMage;
+                case "Alive":
+                    return this.isAlive;
             }
-
-
         }
 
-
-
-
-
+        /* Call when you want to set a status to a specific amount.
+         *      statName is which status to affect
+         *      value is what it will be set to
+         */
+        public void setStat(string statName, bool value)
+        {
+            switch (statName)
+            {
+                case "Mage":
+                    this.isMage = value;
+                case "Alive":
+                    this.isAlive = value;
+            }
+        }
         #endregion
     }
 }
