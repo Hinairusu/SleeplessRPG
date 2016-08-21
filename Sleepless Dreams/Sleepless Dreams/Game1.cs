@@ -19,11 +19,17 @@ namespace Sleepless_Dreams
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
+        #region Background Windows
+        //Background Information
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
+            graphics.IsFullScreen = false;
+            graphics.PreferredBackBufferHeight = 800; //set window height
+            graphics.PreferredBackBufferWidth = 1024; //set window width
             Content.RootDirectory = "Content";
         }
+        #endregion
 
         /// <summary>
         /// Allows the game to perform any initialization it needs to before starting to run.
@@ -81,7 +87,7 @@ namespace Sleepless_Dreams
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.Purple);
 
             // TODO: Add your drawing code here
 

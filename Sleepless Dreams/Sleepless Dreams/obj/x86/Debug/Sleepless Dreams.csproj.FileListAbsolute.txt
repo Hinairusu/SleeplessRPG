@@ -4,3 +4,9 @@ H:\Programming\Sleepless Dreams\Sleepless Dreams\Sleepless Dreams\Sleepless Drea
 H:\Programming\Sleepless Dreams\Sleepless Dreams\Sleepless Dreams\Sleepless Dreams\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 H:\Programming\Sleepless Dreams\Sleepless Dreams\Sleepless Dreams\Sleepless Dreams\obj\x86\Debug\Sleepless Dreams.exe
 H:\Programming\Sleepless Dreams\Sleepless Dreams\Sleepless Dreams\Sleepless Dreams\obj\x86\Debug\Sleepless Dreams.pdb
+H:\Programming\Sleepless Dreams\SleeplessRPG\Sleepless Dreams\Sleepless Dreams\obj\x86\Debug\Sleepless Dreams.csprojResolveAssemblyReference.cache
+H:\Programming\Sleepless Dreams\SleeplessRPG\Sleepless Dreams\Sleepless Dreams\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+H:\Programming\Sleepless Dreams\SleeplessRPG\Sleepless Dreams\Sleepless Dreams\obj\x86\Debug\Sleepless Dreams.exe
+H:\Programming\Sleepless Dreams\SleeplessRPG\Sleepless Dreams\Sleepless Dreams\bin\x86\Debug\Sleepless Dreams.exe
+H:\Programming\Sleepless Dreams\SleeplessRPG\Sleepless Dreams\Sleepless Dreams\bin\x86\Debug\Sleepless Dreams.pdb
+H:\Programming\Sleepless Dreams\SleeplessRPG\Sleepless Dreams\Sleepless Dreams\obj\x86\Debug\Sleepless Dreams.pdb

@@ -72,6 +72,8 @@ namespace Sleepless_Dreams
                     return this.luck;
                 case "Level":
                     return this.level;
+                default:
+                    return -1;
             }
         }
 
@@ -85,20 +87,30 @@ namespace Sleepless_Dreams
             {
                 case "Str":
                     this.str = value;
+                    break;
                 case "Dex":
                     this.dex = value;
+                    break;
                 case "Con":
                     this.con = value;
+                    break;
                 case "Int":
                     this.intel = value;
+                    break;
                 case "Wis":
                     this.wis = value;
+                    break;
                 case "Cha":
                     this.cha = value;
+                    break;
                 case "Luck":
                     this.luck = value;
+                    break;
                 case "Level":
                     this.level = value;
+                    break;
+                default:
+                    break;
             }
             updateDerivedStats();
         }
@@ -113,20 +125,30 @@ namespace Sleepless_Dreams
             {
                 case "Str":
                     this.str += value;
+                    break;
                 case "Dex":
                     this.dex += value;
+                    break;
                 case "Con":
                     this.con += value;
+                    break;
                 case "Int":
                     this.intel += value;
+                    break;
                 case "Wis":
                     this.wis += value;
+                    break;
                 case "Cha":
                     this.cha += value;
+                    break;
                 case "Luck":
                     this.luck += value;
+                    break;
                 case "Level":
                     this.level += value;
+                    break;
+                default:
+                    break;
             }
             updateDerivedStats();
         }
@@ -176,6 +198,8 @@ namespace Sleepless_Dreams
                     return this.cMP;
                 case "mMP":
                     return this.mMP;
+                default: 
+                    return -1;
             }
         }
 
@@ -238,6 +262,8 @@ namespace Sleepless_Dreams
                     return this.isMage;
                 case "Alive":
                     return this.isAlive;
+                default:
+                    return false;
             }
         }
 
@@ -251,8 +277,12 @@ namespace Sleepless_Dreams
             {
                 case "Mage":
                     this.isMage = value;
+                    break;
                 case "Alive":
                     this.isAlive = value;
+                    break;
+                default:
+                    break;
             }
         }
         #endregion
