@@ -7,29 +7,35 @@ namespace Sleepless_Dreams
 {
     public class Character
     {
+        // Level
+        private int level = 1;
 
-        //fixed stats imported elsewhere
-        public int str = 8;
-        public int dex = 8;
-        public int con = 8;
-        public int intel = 8;
-        public int wis = 8;
-        public int cha = 8;
-        public int luck = 8;
-        public int level = 1;
-        public bool isAlive = true;
-        public bool isMage = false;
+        // Base Stats
+        private int str = 8;
+        private int dex = 8;
+        private int con = 8;
+        private int intel = 8;
+        private int wis = 8;
+        private int cha = 8;
+        private int luck = 8;
+        
+        // Statuses
+        private bool isAlive = true;
+        private bool isMage = false;
 
-        //below here starts at 0, [calculated later]
-        public int matk = 0;
-        public int mdef = 0;
-        public int patk = 0;
-        public int pdef = 0;
-        public int cHP = 1;
-        public int cmHP = 1;
-        public int cMP = 0;
-        public int cmMP = 0;
+        // HP and MP
+        private int cHP = 1;
+        private int mHP = 1;
+        private int cMP = 0;
+        private int mMP = 0;
 
+        // Derived Stats
+        private int matk = 0;
+        private int mdef = 0;
+        private int patk = 0;
+        private int pdef = 0;
+
+        // Damage Calculation
         public int damageCalc(int dmg)
         {
             this.cHP -= dmg;
@@ -38,91 +44,142 @@ namespace Sleepless_Dreams
                 this.cHP = 0;
                 this.isAlive = false;
             }
-
             return this.cHP;
         }
 
-        // derriving sub stats from the characters base stats
-        #region Sub Stats
+#region Base Stats
+        // Get, Add to, and Set Base Stats
+        public int getStat(string statName, int value)
+        {
+            switch (statName)
+            {
+                case "Str":
+                    return this.str;
+                case "Dex":
+                    return this.dex;
+                case "Con":
+                    return this.con;
+                case "Int":
+                    return this.intel;
+                case "Wis":
+                    return this.wis;
+                case "Cha":
+                    return this.cha;
+                case "Luck":
+                    return this.luck;
+                case "Level":
+                    return this.level;
+            }
+        }
 
-        public int patkCalc() //Physcial Attack
+        public void setStat(string statName, int value)
+        {
+            switch (statName)
+            {
+                case "Str":
+                    this.str = value;
+                case "Dex":
+                    this.dex = value;
+                case "Con":
+                    this.con = value;
+                case "Int":
+                    this.intel = value;
+                case "Wis":
+                    this.wis = value;
+                case "Cha":
+                    this.cha = value;
+                case "Luck":
+                    this.luck = value;
+                case "Level":
+                    this.level = value;
+            }
+            updateDerivedStats();
+        }
+
+        public void addStat(string statName, int value)
+        {
+            switch (statName)
+            {
+                case "Str":
+                    this.str += value;
+                case "Dex":
+                    this.dex += value;
+                case "Con":
+                    this.con += value;
+                case "Int":
+                    this.intel += value;
+                case "Wis":
+                    this.wis += value;
+                case "Cha":
+                    this.cha += value;
+                case "Luck":
+                    this.luck += value;
+                case "Level":
+                    this.level += value;
+            }
+            updateDerivedStats();
+        }
+
+        public void updateDerivedStats()
+        {
+            patkCalc();
+            matkCalc();
+            pdefCalc();
+            mdefCalc();
+            cHPCalc();
+            mHPCalc();
+            cMPCalc();
+            mMPCalc();
+        }
+#endregion
+
+#region Sub Stats
+        // derriving sub stats from the characters base stats
+        public void patkCalc() //Physcial Attack
         {
             this.patk = this.str + (this.dex / 2);
-
-            return this.patk;
         } 
 
-        public int matkCalc() //Magical Attack
+        public void matkCalc() //Magical Attack
         {
             this.matk = this.intel + ((this.wis + this.cha) / 3);
-
-            return this.matk;
         } 
 
-        public int pdefCalc() //Physcial Defence
+        public void pdefCalc() //Physcial Defence
         {
             this.pdef = this.dex + (this.con / 2);
-
-            return this.pdef;
         }
 
-        public int mdefCalc() //Magical Defence
+        public void mdefCalc() //Magical Defence
         {
             this.mdef = this.wis + ((this.cha + this.intel) / 3);
-
-            return this.mdef;
         }
 
-        public int cHPCalc() //Current HP
+        public void cHPCalc() //Current HP
         {
             this.cHP = (this.con + this.level) * 30;
-
-            return this.cHP;
         }
 
-        public int cmHPCalc() //Maximum HP
+        public void mHPCalc() //Maximum HP
         {
-            this.cmHP = (this.con + this.level) * 30;
-
-            return this.cmHP;
+            this.mHP = (this.con + this.level) * 30;
         }
 
-        public int mageMP() //Current MP if the character is a mage
+        public void cMPCalc() //Current MP if the character is a mage
         {
-            if (isMage == true)
-            {
+            if (isMage)
                 this.cMP = (this.level * 100) + (this.intel * 85);
-
-                return this.cMP;
-            }
             else
-            {
                 this.cMP = 0;
-                return this.cMP;
-            }
         }
 
-        public int magemMP() //Maximum MP if the character is a mage
+        public void mMPCalc() //Maximum MP if the character is a mage
         {
-            if (isMage == true)
-            {
-                this.cmMP = (this.level * 100) + (this.intel * 85);
-
-                return this.cmMP;
-            }
+            if (isMage)
+                this.mMP = (this.level * 100) + (this.intel * 85);
             else
-            {
-                this.cmMP = 0;
-                return this.cmMP;
-            }
-
-
+                this.mMP = 0;
         }
-
-
-
-
-
-        #endregion
+#endregion
     }
 }
